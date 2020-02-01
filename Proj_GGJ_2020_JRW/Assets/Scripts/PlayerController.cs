@@ -4,9 +4,11 @@ using UnityEngine.Networking;
 
 public class PlayerController : NetworkBehaviour
 {
-    public float forwardSpeed;
-    public float backwardSpeed;
+    public float speed;
+    public float forwardMultiplier;
+    public float backwardMultiplier;
     public float jumpForce;
+    public float jumpMultiplier;
     public float gravity;
     public float rayLength;
 
@@ -28,11 +30,11 @@ public class PlayerController : NetworkBehaviour
             Vector3 normalizedDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
             if (normalizedDir.z < 0)
             {
-                normalizedDir.z *= backwardSpeed;
+                normalizedDir.z *=  speed * backwardMultiplier;
             }
             else
             {
-                normalizedDir.z *= forwardSpeed;
+                normalizedDir.z *= speed * forwardMultiplier;
             }
 
             Vector3 dir = normalizedDir * Time.deltaTime;
@@ -40,7 +42,7 @@ public class PlayerController : NetworkBehaviour
 
             if (_characterController.isGrounded && Input.GetButtonDown("Jump") && Physics.Raycast(transform.position, Vector3.down, rayLength)) //In case Revert to -Vector3.up//
             {
-                _verticalSpeed = jumpForce;
+                _verticalSpeed = jumpForce * jumpMultiplier;
             }
             else if (!_characterController.isGrounded)
             {
