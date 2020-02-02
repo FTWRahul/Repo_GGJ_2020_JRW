@@ -31,8 +31,8 @@ public class PlayerIdentity : NetworkBehaviour
        if (isLocalPlayer)
        {
            CmdSpawnPlayer(Vector3.one * 2);
+           GameManager.instance.playerList.Add(this);
        }
-       GameManager.instance.playerList.Add(this);
    }
 
    [Command]

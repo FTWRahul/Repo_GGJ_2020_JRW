@@ -57,6 +57,6 @@ public class PlayerController : NetworkBehaviour
     public override void OnStartAuthority()
     {
         base.OnStartAuthority();
-        Debug.Log("Ya boi gots Authority!");
+        Debug.Log("Ya boi gots Authority! On the controller!");
     }
 }
