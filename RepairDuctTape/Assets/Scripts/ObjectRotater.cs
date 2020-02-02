@@ -9,7 +9,7 @@ public class ObjectRotater : MonoBehaviour
     public List<GameObject> itemsToSpawn;
     public float speed;
 
-    private GameObject _currentObj;
+    public static  GameObject _currentObj;
 
     private void Awake()
     {
