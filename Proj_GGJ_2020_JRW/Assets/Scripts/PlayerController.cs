@@ -25,7 +25,7 @@ public class PlayerController : NetworkBehaviour
 
     void Update()
     {
-        if (isLocalPlayer)
+        if (hasAuthority)
         {
             Vector3 normalizedDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
             if (normalizedDir.z < 0)
