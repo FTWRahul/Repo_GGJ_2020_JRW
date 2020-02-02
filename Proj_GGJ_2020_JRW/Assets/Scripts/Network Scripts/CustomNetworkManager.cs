@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class CustomNetworkManager : NetworkManager
 {
     public string playerName;
-    public GameObject gameManager;
     private bool _isOutOfAss;
 
     public void StartHosting()
@@ -31,8 +30,6 @@ public class CustomNetworkManager : NetworkManager
     public override void OnClientConnect(NetworkConnection conn)
     {
         base.OnClientConnect(conn);
-        GameObject go = Instantiate(gameManager);
-        //NetworkServer.Spawn(gameManager);
     }
 
     public void RefreshMatches()

@@ -9,25 +9,35 @@ public class PlayerIdentity : NetworkBehaviour
    [SerializeField]
    private GameObject playerPrefab;
 
-   public GameManager gameManager;
+   public GameObject gameManager;
+
+   private GameManager gm;
 
    private void Awake()
    {
-      gameManager = FindObjectOfType<GameManager>();
+       //CmdSpawnGameManager();
+       //gameManager = FindObjectOfType<GameManager>();
+       gm = FindObjectOfType<GameManager>();
 //      Debug.Log("Is I the local boi?" + isLocalPlayer);
 //      Debug.Log("Do I have Athority?" + hasAuthority);
-      gameManager.playerList.Add(this);
+       gm.playerList.Add(this);
 //      Debug.Log("Added to list");
+   }
+
+   [Command]
+   void CmdSpawnGameManager()
+   {
+       GameObject go = Instantiate(gameManager);
+       NetworkServer.SpawnWithClientAuthority(go, connectionToClient);
    }
    
    [ClientRpc]
    public void RpcSpawnPlayer(Vector3 spawnPosi)
    {
-
          GameObject player = Instantiate(playerPrefab, spawnPosi, Quaternion.identity);
          player.transform.parent = this.transform;
          NetworkServer.SpawnWithClientAuthority(player, connectionToClient);
-         gameManager.CmdLaunchPlayers();
+         gm.CmdLaunchPlayers();
    }
 
    public override void OnStartLocalPlayer()
