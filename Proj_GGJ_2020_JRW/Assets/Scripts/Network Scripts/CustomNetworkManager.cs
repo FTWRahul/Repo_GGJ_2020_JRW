@@ -46,6 +46,8 @@ public class CustomNetworkManager : NetworkManager
     {
         Debug.Log(" Address "+networkAddress);
         Debug.Log( " Port "+networkPort);
+        Debug.Log("Server address "+ responseData.address);
+        Debug.Log("Server port "+ responseData.port);
         StartClient(responseData);
     }
 
