@@ -72,7 +72,8 @@ public class SuccGun : NetworkBehaviour, IGunInterface
         int i = 0;
         while (i < hitColliders.Length)
         {
-            if (hitColliders[i].CompareTag("Player"){
+            if (hitColliders[i].CompareTag("Player"))
+            {
                 //ToDo apply damage
             }
             i++;
