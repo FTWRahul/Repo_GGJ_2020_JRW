@@ -13,15 +13,23 @@ public class PlayerIdentity : NetworkBehaviour
 
    private GameManager gm;
 
-   private void Awake()
+   private void Start()
    {
        //CmdSpawnGameManager();
        //gameManager = FindObjectOfType<GameManager>();
-       gm = FindObjectOfType<GameManager>();
 //      Debug.Log("Is I the local boi?" + isLocalPlayer);
 //      Debug.Log("Do I have Athority?" + hasAuthority);
-       gm.playerList.Add(this);
 //      Debug.Log("Added to list");
+
+       StartCoroutine(StartWithDelay());
+   }
+
+   IEnumerator StartWithDelay()
+   {
+       yield return new WaitForSeconds(2f);
+       gm = FindObjectOfType<GameManager>();
+       gm.playerList.Add(this);
+
    }
 
    [Command]
