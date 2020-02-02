@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class BabyLazer : NetworkBehaviour, IGunInterface
+public class BabyLazer : NetworkBehaviour
 {
 
     //Todo 
@@ -11,7 +11,7 @@ public class BabyLazer : NetworkBehaviour, IGunInterface
     public AudioClip fireSound;
     public float chargeTime = 0;
     public float fireThreshold = 1f;
-    public bool Reloading = false;
+    public bool reloading = false;
 
 
 
@@ -22,14 +22,14 @@ public class BabyLazer : NetworkBehaviour, IGunInterface
             //not local
             return;
         }
-        if (Reloading != true)
+        if (reloading != true)
         {
 
             if (Input.GetKey(KeyCode.Mouse0))
             {
                 //charge the laser, then check if its charged
                 chargeTime += Time.deltaTime;
-                fire();
+                Fire();
             }
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
@@ -37,10 +37,9 @@ public class BabyLazer : NetworkBehaviour, IGunInterface
                 chargeTime = 0;
             }
         }
-
     }
 
-    public void fire()
+    private void Fire()
     {
 
         if (chargeTime > fireThreshold)
@@ -48,30 +47,28 @@ public class BabyLazer : NetworkBehaviour, IGunInterface
             //if charged fire it
             CmdRay();
             chargeTime = 0;
-            Reloading = true;
-            StartCoroutine(reloadDelay());
+            reloading = true;
+            StartCoroutine(ReloadDelay());
         }
         else
         {
             //do nothing
             return;
         }
-
-
-
+        
     }
 
-    IEnumerator reloadDelay()
+    IEnumerator ReloadDelay()
     {
         yield return new WaitForSeconds(1);
-        Reloading = false;
+        reloading = false;
         //laserLine.SetPosition(1, transform.position);
         yield break;
 
     }
 
     [Command]
-    public void CmdRay()
+    private void CmdRay()
     {
         //hitscan gun, raycast if it hits an enemy deal damage
         RaycastHit hit;
@@ -85,8 +82,6 @@ public class BabyLazer : NetworkBehaviour, IGunInterface
                 //deal damage
 
             }
-
-
         }
     }
 
