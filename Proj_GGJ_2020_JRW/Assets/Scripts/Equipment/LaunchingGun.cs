@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class CatApult : MonoBehaviour
+public class LaunchingGun : NetworkBehaviour
 {
-    public GameObject catProjectile;
+    public int projectileAmount;
+    public GameObject projectile;
     public Transform shotPoint;
-
+    
+    public float shotForce; // force??
     public float reloadTime;
     
     private bool _canAttack = true;
@@ -16,11 +19,16 @@ public class CatApult : MonoBehaviour
         {
             if (_canAttack)
             {
-                Instantiate(catProjectile, shotPoint.position, Quaternion.identity);
-                
+                CmdSpawnProjectile();
                 StartCoroutine(Reload());
             }
         }
+    }
+
+    [Command]
+    private void CmdSpawnProjectile()
+    {
+        Instantiate(projectile, shotPoint.position, Quaternion.identity);
     }
 
     IEnumerator Reload()
