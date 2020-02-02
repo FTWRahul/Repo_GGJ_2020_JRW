@@ -36,11 +36,14 @@ public class GameManager : NetworkBehaviour
         {
             return;
         }
-        for (int i = 0; i < playerList.Count; i++)
-        {
-            int rand = UnityEngine.Random.Range(0, playerSpawnPositions.Count);
-            playerList[i].RpcSpawnPlayer(playerSpawnPositions[rand].localPosition);
-            playerSpawnPositions.RemoveAt(rand);
-        }
+//        for (int i = 0; i < playerList.Count; i++)
+//        {
+//            playerList[i].RpcSpawnPlayer(playerSpawnPositions[rand].localPosition);
+//        }
+        int rand = UnityEngine.Random.Range(0, playerSpawnPositions.Count);
+
+        playerList[0].RpcSpawnPlayer(playerSpawnPositions[rand].localPosition);
+        playerSpawnPositions.RemoveAt(rand);
+
     }
 }
