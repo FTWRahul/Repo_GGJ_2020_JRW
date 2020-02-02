@@ -14,10 +14,10 @@ public class PlayerIdentity : NetworkBehaviour
    private void Awake()
    {
       gameManager = FindObjectOfType<GameManager>();
-      Debug.Log("Is I the local boi?" + isLocalPlayer);
-      Debug.Log("Do I have Athority?" + hasAuthority);
+//      Debug.Log("Is I the local boi?" + isLocalPlayer);
+//      Debug.Log("Do I have Athority?" + hasAuthority);
       gameManager.playerList.Add(this);
-      Debug.Log("Added to list");
+//      Debug.Log("Added to list");
    }
    
    [ClientRpc]
@@ -33,8 +33,8 @@ public class PlayerIdentity : NetworkBehaviour
    public override void OnStartLocalPlayer()
    {
       base.OnStartLocalPlayer();
-      Debug.Log("Started");
-      Debug.Log("Is I the local boi?" + isLocalPlayer);
-      Debug.Log("Do I have Athority?" + hasAuthority);
+//      Debug.Log("Started");
+//      Debug.Log("Is I the local boi?" + isLocalPlayer);
+//      Debug.Log("Do I have Athority?" + hasAuthority);
    }
 }

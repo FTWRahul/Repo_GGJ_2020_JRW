@@ -14,7 +14,7 @@ public class JoinButton : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(JoinMatch);
     }
 
-    internal void initialize(MatchInfoSnapshot match, Transform panelTransform)
+    internal void Initialize(MatchInfoSnapshot match, Transform panelTransform)
     {
         this.match = match;
         buttonText.text = match.name;

@@ -7,7 +7,7 @@ using Random = System.Random;
 
 public class GameManager : NetworkBehaviour
 {
-    //public static GameManager instance;
+    public static GameManager instance;
     
     public List<Transform> playerSpawnPositions;
 
@@ -17,14 +17,15 @@ public class GameManager : NetworkBehaviour
 
     private void Awake()
     {
-//        if (instance == null)
-//        {
-//            instance = this;
-//        }
-//        else
-//        {
-//            Destroy(this);
-//        }
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+        DontDestroyOnLoad(this);
     }
 
     //Spawn the players in the game

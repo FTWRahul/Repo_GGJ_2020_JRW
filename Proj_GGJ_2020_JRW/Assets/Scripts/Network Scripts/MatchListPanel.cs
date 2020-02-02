@@ -37,7 +37,7 @@ public class MatchListPanel : MonoBehaviour
         foreach (var match in matches)
         {
             var button = Instantiate(joinButtonPrefab);
-            button.initialize(match, transform);
+            button.Initialize(match, transform);
         }
     }
     // Update is called once per frame

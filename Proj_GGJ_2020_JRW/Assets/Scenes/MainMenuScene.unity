@@ -2903,6 +2903,8 @@ MonoBehaviour:
   isNetworkActive: 0
   matchMaker: {fileID: 0}
   playerName: 
+  gameManager: {fileID: 2637977220381536881, guid: e20ff9d45b738064d9578311c9d604e4,
+    type: 3}
 --- !u!4 &1515045040
 Transform:
   m_ObjectHideFlags: 0
