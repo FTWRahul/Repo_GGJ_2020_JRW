@@ -14,33 +14,33 @@ public class ServerEquipment : MonoBehaviour
         switch (Component)
         {
             case bodyComponent.HEAD:
-                PHead[newID].SetActive(false);
+                PHead[newID-1].SetActive(false);
                 break;
             case bodyComponent.WEAPON:
-                PWeapon[newID].SetActive(false);
+                PWeapon[newID-1].SetActive(false);
                 break;
             case bodyComponent.FEET:
-                PFeet[newID].SetActive(false);
+                PFeet[newID-1].SetActive(false);
                 break;
 
         }
     }
 
-    public void Unequip(bodyComponent Component, int newID, Transform DropLocation)
+    public void Unequip(bodyComponent Component, int newID, Vector3 DropLocation)
     {
         switch (Component)
         {
             case bodyComponent.HEAD:
-                PHead[newID].transform.position = DropLocation.position;
-                PHead[newID].SetActive(true);
+                PHead[newID-1].transform.position = DropLocation;
+                PHead[newID-1].SetActive(true);
                 break;
             case bodyComponent.WEAPON:
-                PWeapon[newID].transform.position = DropLocation.position;
-                PWeapon[newID].SetActive(true);
+                PWeapon[newID-1].transform.position = DropLocation;
+                PWeapon[newID-1].SetActive(true);
                 break;
             case bodyComponent.FEET:
-                PFeet[newID].transform.position = DropLocation.position;
-                PFeet[newID].SetActive(true);
+                PFeet[newID-1].transform.position = DropLocation;
+                PFeet[newID-1].SetActive(true);
                 break;
 
         }
