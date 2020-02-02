@@ -14,8 +14,6 @@ public class EquipmentManager : MonoBehaviour
 
     void EquipCorrect(bodyComponent Component, int newID)
     {
-        
-       
         switch (Component)
         {
             case bodyComponent.HEAD:
@@ -44,8 +42,6 @@ public class EquipmentManager : MonoBehaviour
                 break;
 
         }
-
-
     }
 
 

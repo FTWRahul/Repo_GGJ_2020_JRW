@@ -24,8 +24,6 @@ public class ServerEquipment : MonoBehaviour
                 break;
 
         }
-
-
     }
 
     public void Unequip(bodyComponent Component, int newID, Transform DropLocation)
