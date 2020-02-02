@@ -8,6 +8,7 @@ public class ObjectRotater : MonoBehaviour
 {
     public List<GameObject> itemsToSpawn;
     public float speed;
+    public GameObject backEndRope;
 
     public static  GameObject _currentObj;
 
@@ -16,6 +17,8 @@ public class ObjectRotater : MonoBehaviour
         int rand = Random.Range(0, itemsToSpawn.Count);
         _currentObj = Instantiate(itemsToSpawn[rand]);
         _currentObj.transform.parent = this.transform;
+//        backEndRope.transform.position = _currentObj.transform.position;
+//        backEndRope.transform.parent = _currentObj.transform;
     }
 
     private void Update()
