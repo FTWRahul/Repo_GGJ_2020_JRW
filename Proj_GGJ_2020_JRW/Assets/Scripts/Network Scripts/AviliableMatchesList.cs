@@ -8,14 +8,14 @@ namespace Assets.Scripts
 {
     public static class AviliableMatchesList
     {
-        public static event Action<List<MatchInfoSnapshot>> OnAvaliableMatchesChanged = delegate { };
+        public static event Action<List<MatchInfoSnapshot>> OnAvailableMatchesChanged = delegate { };
 
         private static List<MatchInfoSnapshot> matches = new List<MatchInfoSnapshot>();
 
         internal static void HandleNewMatchList(List<MatchInfoSnapshot> matchList)
         {
             matches = matchList;
-            OnAvaliableMatchesChanged(matches);
+            OnAvailableMatchesChanged(matches);
         }
     }
 }
