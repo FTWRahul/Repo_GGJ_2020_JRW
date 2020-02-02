@@ -19,14 +19,20 @@ public class CustomNetworkManager : NetworkManager
         matchMaker.CreateMatch(playerName, 5, true, "", "", "", 0, 0, OnMatchCreated);
         Debug.Log(" For Server Address "+networkAddress);
         Debug.Log( " For Server Port "+networkPort);
-        GameObject go = Instantiate(gameManager);
-        NetworkServer.Spawn(gameManager);
+        
     }
 
     private void OnMatchCreated(bool success, string extendedInfo, MatchInfo responseData)
     {
         base.StartHost(responseData);
         RefreshMatches();
+    }
+
+    public override void OnClientConnect(NetworkConnection conn)
+    {
+        base.OnClientConnect(conn);
+        GameObject go = Instantiate(gameManager);
+        //NetworkServer.Spawn(gameManager);
     }
 
     public void RefreshMatches()
