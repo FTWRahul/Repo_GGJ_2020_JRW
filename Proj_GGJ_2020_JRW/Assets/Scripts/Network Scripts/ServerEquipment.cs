@@ -9,9 +9,9 @@ public class ServerEquipment : MonoBehaviour
     public List<GameObject> PWeapon;
     public List<GameObject> PFeet;
 
-    public void equip(bodyComponent component, int newID)
+    public void Equip(bodyComponent Component, int newID)
     {
-        switch (component)
+        switch (Component)
         {
             case bodyComponent.HEAD:
                 PHead[newID].SetActive(false);
@@ -28,9 +28,9 @@ public class ServerEquipment : MonoBehaviour
 
     }
 
-    public void unEquip(bodyComponent component, int newID, Transform DropLocation)
+    public void Unequip(bodyComponent Component, int newID, Transform DropLocation)
     {
-        switch (component)
+        switch (Component)
         {
             case bodyComponent.HEAD:
                 PHead[newID].transform.position = DropLocation.position;
@@ -46,8 +46,6 @@ public class ServerEquipment : MonoBehaviour
                 break;
 
         }
-        gameObject.transform.localPosition = Spawn.position;
-        gameObject.SetActive(true);
 
     }
 

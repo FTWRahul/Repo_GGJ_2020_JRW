@@ -12,11 +12,11 @@ public class EquipmentManager : MonoBehaviour
     public int currentWeapon;
     public int currentFeet;
 
-    void EquipCorrect(bodyComponent component, int newID)
+    void EquipCorrect(bodyComponent Component, int newID)
     {
         
        
-        switch (component)
+        switch (Component)
         {
             case bodyComponent.HEAD:
                 Head[currentHead].SetActive(false);

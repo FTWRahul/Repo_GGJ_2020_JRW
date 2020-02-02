@@ -5,6 +5,10 @@ using UnityEngine.Networking;
 
 public class SuccGun : NetworkBehaviour, IGunInterface
 {
+    private void Start()
+    {
+        
+    }
 
 
     //Todo 
