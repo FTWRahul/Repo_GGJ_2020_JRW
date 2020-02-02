@@ -1,6 +1,6 @@
 ﻿
 public interface IGunInterface
 {
-    void fire();
+    void Fire();
 
 }

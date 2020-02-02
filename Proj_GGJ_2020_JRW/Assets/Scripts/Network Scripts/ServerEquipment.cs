@@ -1,50 +1,62 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class ServerEquipment : MonoBehaviour
+public class ServerEquipment : NetworkBehaviour
 {
+    public List<GameObject> PHeadPrefabs;
+    public List<GameObject> PWeaponPrefabs;
+    public List<GameObject> PFeetPrefabs;
 
-    public List<GameObject> PHead;
-    public List<GameObject> PWeapon;
-    public List<GameObject> PFeet;
-
-    public void Equip(bodyComponent Component, int newID)
+    /*public void Equip(bodyComponent Component, int newID)
     {
         switch (Component)
         {
             case bodyComponent.HEAD:
-                PHead[newID-1].SetActive(false);
+                PHeadPrefabs[newID-1].SetActive(false);
                 break;
             case bodyComponent.WEAPON:
-                PWeapon[newID-1].SetActive(false);
+                PWeaponPrefabs[newID-1].SetActive(false);
                 break;
             case bodyComponent.FEET:
-                PFeet[newID-1].SetActive(false);
+                PFeetPrefabs[newID-1].SetActive(false);
                 break;
-
         }
-    }
+    }*/
 
     public void Unequip(bodyComponent Component, int newID, Vector3 DropLocation)
     {
         switch (Component)
         {
             case bodyComponent.HEAD:
-                PHead[newID-1].transform.position = DropLocation;
-                PHead[newID-1].SetActive(true);
+                CmdSpawnEquipment(PHeadPrefabs[newID-1], DropLocation);
+                /*PHeadPrefabs[newID-1].transform.position = DropLocation;
+                PHeadPrefabs[newID-1].SetActive(true);*/
                 break;
             case bodyComponent.WEAPON:
-                PWeapon[newID-1].transform.position = DropLocation;
-                PWeapon[newID-1].SetActive(true);
+                CmdSpawnEquipment(PWeaponPrefabs[newID-1], DropLocation);
+                /*PWeaponPrefabs[newID-1].transform.position = DropLocation;
+                PWeaponPrefabs[newID-1].SetActive(true);*/
                 break;
             case bodyComponent.FEET:
-                PFeet[newID-1].transform.position = DropLocation;
-                PFeet[newID-1].SetActive(true);
+                CmdSpawnEquipment(PFeetPrefabs[newID-1], DropLocation);
+                /*PFeetPrefabs[newID-1].transform.position = DropLocation;
+                PFeetPrefabs[newID-1].SetActive(true);*/
                 break;
-
         }
-
     }
 
+    [Command]
+    public void CmdServerDestroy(GameObject equipment)
+    {
+        NetworkServer.Destroy(equipment);
+    }
+    
+    [Command]
+    public void CmdSpawnEquipment(GameObject equipment, Vector3 pos)
+    {
+        GameObject eq = Instantiate(equipment, pos, Quaternion.identity);
+        NetworkServer.Spawn(eq);
+    }
 }

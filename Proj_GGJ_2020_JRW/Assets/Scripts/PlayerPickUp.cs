@@ -14,11 +14,14 @@ public class PlayerPickUp : MonoBehaviour
     
     private PlayerAim _playerAim;
     private Camera _camera;
+    
     private Equipment _toCollect;
+    private EquipmentManager _equipmentManager;
 
     private void Start()
     {
         _playerAim = GetComponent<PlayerAim>();
+        _equipmentManager = GetComponent<EquipmentManager>();
         _camera = Camera.main;
     }
 
@@ -41,7 +44,7 @@ public class PlayerPickUp : MonoBehaviour
 
             if (_holdTime >= timeToCollect)
             {
-                //TODO:: Collect
+                _equipmentManager.EquipCorrect(_toCollect.type, _toCollect.id, _toCollect.gameObject);
             }
         }
         else

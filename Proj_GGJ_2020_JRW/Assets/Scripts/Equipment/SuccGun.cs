@@ -35,7 +35,7 @@ public class SuccGun : NetworkBehaviour, IGunInterface
             {
                 //charge the laser, then check if its charged
                 succTime += Time.deltaTime;
-                fire();
+                Fire();
             }
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
@@ -53,7 +53,7 @@ public class SuccGun : NetworkBehaviour, IGunInterface
         yield break;
 
     }
-    public void fire()
+    public void Fire()
     {
         if (succTime > succThreshold)
         {
