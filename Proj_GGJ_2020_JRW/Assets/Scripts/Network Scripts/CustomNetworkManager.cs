@@ -44,6 +44,8 @@ public class CustomNetworkManager : NetworkManager
 
     private void HandleJoinedMatch(bool success, string extendedInfo, MatchInfo responseData)
     {
+        Debug.Log(" Address "+networkAddress);
+        Debug.Log( " Port "+networkPort);
         StartClient(responseData);
     }
 
