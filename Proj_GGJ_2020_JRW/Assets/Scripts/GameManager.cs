@@ -13,8 +13,6 @@ public class GameManager : NetworkBehaviour
 
     public List<PlayerIdentity> playerList;
     
-
-
     private void Awake()
     {
         if (instance == null)
@@ -42,7 +40,7 @@ public class GameManager : NetworkBehaviour
 //        }
         int rand = UnityEngine.Random.Range(0, playerSpawnPositions.Count);
 
-        playerList[0].RpcSpawnPlayer(playerSpawnPositions[rand].localPosition);
+        playerList[0].CmdSpawnPlayer(playerSpawnPositions[rand].localPosition);
         playerSpawnPositions.RemoveAt(rand);
 
     }

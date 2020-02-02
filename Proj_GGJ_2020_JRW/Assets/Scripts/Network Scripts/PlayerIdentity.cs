@@ -27,9 +27,12 @@ public class PlayerIdentity : NetworkBehaviour
    IEnumerator StartWithDelay()
    {
        yield return new WaitForSeconds(2f);
-       gm = FindObjectOfType<GameManager>();
-       gm.playerList.Add(this);
-
+       //gm = FindObjectOfType<GameManager>();
+       if (isLocalPlayer)
+       {
+           CmdSpawnPlayer(Vector3.one * 2);
+       }
+       GameManager.instance.playerList.Add(this);
    }
 
    [Command]
@@ -39,16 +42,12 @@ public class PlayerIdentity : NetworkBehaviour
        NetworkServer.SpawnWithClientAuthority(go, connectionToClient);
    }
    
-   [ClientRpc]
-   public void RpcSpawnPlayer(Vector3 spawnPosi)
+   [Command]
+   public void CmdSpawnPlayer(Vector3 spawnPosi)
    {
-       if (isLocalPlayer)
-       {
-           GameObject player = Instantiate(playerPrefab, spawnPosi, Quaternion.identity);
-           player.transform.parent = this.transform;
-           NetworkServer.SpawnWithClientAuthority(player, connectionToClient);
-           gm.CmdLaunchPlayers();
-       }
+       GameObject player = Instantiate(playerPrefab, spawnPosi, Quaternion.identity);
+       player.transform.parent = this.transform;
+       NetworkServer.SpawnWithClientAuthority(player, connectionToClient);
    }
 
    public override void OnStartLocalPlayer()
