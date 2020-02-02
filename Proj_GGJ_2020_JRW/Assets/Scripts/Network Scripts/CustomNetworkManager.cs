@@ -14,7 +14,9 @@ public class CustomNetworkManager : NetworkManager
     public void StartHosting()
     {
         StartMatchMaker();
-        matchMaker.CreateMatch(playerName, 5, true, "", "", "", 0, 0, OnMatchCreated);      
+        matchMaker.CreateMatch(playerName, 5, true, "", "", "", 0, 0, OnMatchCreated);
+        Debug.Log(" For Server Address "+networkAddress);
+        Debug.Log( " For Server Port "+networkPort);
     }
 
     private void OnMatchCreated(bool success, string extendedInfo, MatchInfo responseData)
