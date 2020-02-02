@@ -64,7 +64,7 @@ MonoBehaviour:
     i14: 0
     i15: 0
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &7725830646457492950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,3 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b49b6e0911a517408ed706712e8f183, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 7284427928802994915, guid: c774f1ae764e7244aa6b016955eb28f2,
+    type: 3}
+  gameManager: {fileID: 0}

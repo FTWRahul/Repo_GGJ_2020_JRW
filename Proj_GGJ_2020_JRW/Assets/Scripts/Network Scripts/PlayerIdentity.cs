@@ -6,22 +6,36 @@ using UnityEngine.Networking;
 
 public class PlayerIdentity : NetworkBehaviour
 {
+   [SerializeField]
    private GameObject playerPrefab;
+
+   public GameManager gameManager;
 
    private void Awake()
    {
-      if (isLocalPlayer)
-      {
-         GameManager.instance.PlayerList.Add(this);
-      }
+      gameManager = FindObjectOfType<GameManager>();
+      Debug.Log("Is I the local boi?" + isLocalPlayer);
+      Debug.Log("Do I have Athority?" + hasAuthority);
+      gameManager.playerList.Add(this);
+      Debug.Log("Added to list");
    }
    
-   [Command]
-   public void CmdSpawnPlayer(Vector3 spawnPosi)
+   [ClientRpc]
+   public void RpcSpawnPlayer(Vector3 spawnPosi)
    {
       if (isLocalPlayer)
       {
-         Instantiate(playerPrefab, spawnPosi, Quaternion.identity);
+         GameObject player = Instantiate(playerPrefab, spawnPosi, Quaternion.identity);
+         player.transform.parent = this.transform;
+         NetworkServer.SpawnWithClientAuthority(player, connectionToClient);
       }
+   }
+
+   public override void OnStartLocalPlayer()
+   {
+      base.OnStartLocalPlayer();
+      Debug.Log("Started");
+      Debug.Log("Is I the local boi?" + isLocalPlayer);
+      Debug.Log("Do I have Athority?" + hasAuthority);
    }
 }

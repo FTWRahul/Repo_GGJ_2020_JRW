@@ -1841,7 +1841,7 @@ MonoBehaviour:
     i14: 0
     i15: 0
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &7284427928802994917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1854,13 +1854,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e46fb2ba17db22488581276f9b5c52f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  forwardMultiplier: 0
-  backwardMultiplier: 0
-  jumpForce: 0
-  jumpMultiplier: 0
-  gravity: 0
-  rayLength: 0
+  speed: 4
+  forwardMultiplier: 1
+  backwardMultiplier: 1
+  jumpForce: 4
+  jumpMultiplier: 1
+  gravity: 9.8
+  rayLength: 1
 --- !u!114 &7284427928802994919
 MonoBehaviour:
   m_ObjectHideFlags: 0

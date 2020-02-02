@@ -6,15 +6,15 @@ using TMPro;
 
 public class SetPlayerNameScript : MonoBehaviour
 {
-    InputField inputField;
+    TMP_InputField inputField;
 
     private void Start()
     {
-        inputField = GetComponent<InputField>();
+        inputField = GetComponent<TMP_InputField>();
         inputField.onEndEdit.AddListener(delegate { LockInput(inputField); });
     }
 
-    void LockInput(InputField input)
+    void LockInput(TMP_InputField input)
     {
         if (input.text.Length > 0)
         {

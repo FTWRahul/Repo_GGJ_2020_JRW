@@ -25,7 +25,7 @@ public class PlayerController : NetworkBehaviour
 
     void Update()
     {
-        if (isLocalPlayer)
+        if (hasAuthority)
         {
             Vector3 normalizedDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
             if (normalizedDir.z < 0)
@@ -40,7 +40,7 @@ public class PlayerController : NetworkBehaviour
             Vector3 dir = normalizedDir * Time.deltaTime;
             dir = transform.rotation * normalizedDir;
 
-            if (_characterController.isGrounded && Input.GetButtonDown("Jump") && Physics.Raycast(transform.position, Vector3.down, rayLength)) //In case Revert to -Vector3.up//
+            if (_characterController.isGrounded && Input.GetButtonDown("Jump")) //In case Revert to -Vector3.up//  && Physics.Raycast(transform.position, -Vector3.up, rayLength)
             {
                 _verticalSpeed = jumpForce * jumpMultiplier;
             }
@@ -50,7 +50,13 @@ public class PlayerController : NetworkBehaviour
             }
 
             dir.y = _verticalSpeed;
-            _characterController.Move(normalizedDir);
+            _characterController.Move(dir);
         }
+    }
+
+    public override void OnStartAuthority()
+    {
+        base.OnStartAuthority();
+        Debug.Log("Ya boi gots Authority!");
     }
 }

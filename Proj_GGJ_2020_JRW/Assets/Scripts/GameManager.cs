@@ -11,19 +11,8 @@ public class GameManager : NetworkBehaviour
     
     public List<Transform> playerSpawnPositions;
 
-    private List<PlayerIdentity> _playerList;
-
-    public List<PlayerIdentity> PlayerList
-    {
-        get
-        {
-            if (_playerList.Count == 2)
-            {
-                LaunchPlayers();
-            }
-            return _playerList;
-        }
-    }
+    public List<PlayerIdentity> playerList;
+    
 
 
     private void Awake()
@@ -39,12 +28,13 @@ public class GameManager : NetworkBehaviour
     }
 
     //Spawn the players in the game
-    public void LaunchPlayers()
+    [Command][ContextMenu("Drop Player")]
+    public void CmdLaunchPlayers()
     {
-        for (int i = 0; i < _playerList.Count; i++)
+        for (int i = 0; i < playerList.Count; i++)
         {
             int rand = UnityEngine.Random.Range(0, playerSpawnPositions.Count);
-            _playerList[i].CmdSpawnPlayer(playerSpawnPositions[rand].position);
+            playerList[i].RpcSpawnPlayer(playerSpawnPositions[rand].localPosition);
             playerSpawnPositions.RemoveAt(rand);
         }
     }
