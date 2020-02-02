@@ -190,7 +190,7 @@ MonoBehaviour:
     i13: 0
     i14: 0
     i15: 0
-  m_ServerOnly: 0
+  m_ServerOnly: 1
   m_LocalPlayerAuthority: 0
 --- !u!114 &2637977220381536882
 MonoBehaviour:
@@ -211,6 +211,7 @@ MonoBehaviour:
   - {fileID: 2637977220161222532}
   - {fileID: 2637977221092526708}
   - {fileID: 2637977221513170800}
+  playerList: []
 --- !u!1 &2637977221092526699
 GameObject:
   m_ObjectHideFlags: 0

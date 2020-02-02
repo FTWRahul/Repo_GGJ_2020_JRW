@@ -23,12 +23,11 @@ public class PlayerIdentity : NetworkBehaviour
    [ClientRpc]
    public void RpcSpawnPlayer(Vector3 spawnPosi)
    {
-      if (isLocalPlayer)
-      {
+
          GameObject player = Instantiate(playerPrefab, spawnPosi, Quaternion.identity);
          player.transform.parent = this.transform;
          NetworkServer.SpawnWithClientAuthority(player, connectionToClient);
-      }
+         gameManager.CmdLaunchPlayers();
    }
 
    public override void OnStartLocalPlayer()

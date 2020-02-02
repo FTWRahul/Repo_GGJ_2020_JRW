@@ -18,12 +18,12 @@ public class Projectile : NetworkBehaviour
     private void OnCollisionEnter(Collision other)
     {
        //TODO: 
-       CheckForPlayer();
+       CmdCheckForPlayer();
        //Destroy
     }
 
     [Command]
-    private void CheckForPlayer()
+    private void CmdCheckForPlayer()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, damageRange);
         

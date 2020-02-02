@@ -669,10 +669,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: fea8e2cb-b142-4668-b0db-ed3850ff7a49
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Proj_GGJ_2020_JRW
+  organizationId: ftwrahul
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

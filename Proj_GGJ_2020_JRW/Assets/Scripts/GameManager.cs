@@ -7,7 +7,7 @@ using Random = System.Random;
 
 public class GameManager : NetworkBehaviour
 {
-    public static GameManager instance;
+    //public static GameManager instance;
     
     public List<Transform> playerSpawnPositions;
 
@@ -17,20 +17,24 @@ public class GameManager : NetworkBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this);
-        }
+//        if (instance == null)
+//        {
+//            instance = this;
+//        }
+//        else
+//        {
+//            Destroy(this);
+//        }
     }
 
     //Spawn the players in the game
     [Command][ContextMenu("Drop Player")]
     public void CmdLaunchPlayers()
     {
+        if (playerList.Count < 1)
+        {
+            return;
+        }
         for (int i = 0; i < playerList.Count; i++)
         {
             int rand = UnityEngine.Random.Range(0, playerSpawnPositions.Count);
