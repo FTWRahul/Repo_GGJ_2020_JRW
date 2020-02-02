@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Assets.Scripts;
+using UnityEngine;
 using UnityEngine.Networking.Match;
-using System;
 
-public class MatchListPanel : MonoBehaviour
+public class MatchPanel : MonoBehaviour
 {
     [SerializeField]
     private JoinButton joinButtonPrefab;
@@ -13,15 +12,14 @@ public class MatchListPanel : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        AviliableMatchesList.OnAvailableMatchesChanged += AviliableMatchesListOnAvailableMatchesChanged;
+        AviliableMatchesList.OnAvailableMatchesChanged += OnAvailableMatchesChanged;
     }
 
-    private void AviliableMatchesListOnAvailableMatchesChanged(List<MatchInfoSnapshot> matches)
+    private void OnAvailableMatchesChanged(List<MatchInfoSnapshot> matches)
     {
         ClearExistingButtons();
         CreateNewJoinGameButtons(matches);
     }
-
 
     private void ClearExistingButtons()
     {
@@ -39,10 +37,5 @@ public class MatchListPanel : MonoBehaviour
             var button = Instantiate(joinButtonPrefab);
             button.initialize(match, transform);
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
