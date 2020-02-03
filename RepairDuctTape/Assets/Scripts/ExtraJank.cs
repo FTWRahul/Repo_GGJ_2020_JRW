@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class ExtraJank : MonoBehaviour
 {
-    private void Awake()
-    {
-        this.gameObject.isStatic = true;
-    }
-
-    private void OnDestroy()
-    {
-    }
+//    private void Awake()
+//    {
+//        this.gameObject.isStatic = true;
+//    }
+//
+//    private void OnDestroy()
+//    {
+//    }
 }

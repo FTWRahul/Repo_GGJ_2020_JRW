@@ -11,30 +11,40 @@ public class Tape : MonoBehaviour
     public GameObject tapePrefab;
 
     public float timeBeforeLastTape;
-    public static bool shouldDropTape;
+    public static bool stopTape;
     public Vector3 spawnPoint;
+
+    public GameObject endPoint;
+    public GameObject startPoint;
     
     private void Update()
     {
-        var pos = transform.position;
-        pos.y = Mathf.Clamp(transform.position.y, minMaxHeight.x, minMaxHeight.y);
-        transform.position = pos;
-        
-        transform.Translate(0, Input.GetAxis("Mouse Y") * movementSpeed * Time.deltaTime, 0);
-
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (stopTape)
         {
-            DropPiece();
+            return;
         }
+        var pos = startPoint.transform.position;
+        pos.y = Mathf.Clamp(startPoint.transform.position.y, minMaxHeight.x, minMaxHeight.y);
+        startPoint.transform.position = pos;
+        
+        startPoint.transform.Translate(0, Input.GetAxis("Mouse Y") * movementSpeed * Time.deltaTime, 0);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            stopTape = true;
+        }
+        DropPiece();
     }
 
     public void DropPiece()
     {
-        if (!shouldDropTape)
+        if (!stopTape)
         {
             return;
         }
-        GameObject go = Instantiate(tapePrefab, spawnPoint, Quaternion.identity);
-        
+
+        startPoint.transform.parent = endPoint.transform.parent;
+        startPoint.transform.localPosition = endPoint.transform.localPosition;
+
     }
 }

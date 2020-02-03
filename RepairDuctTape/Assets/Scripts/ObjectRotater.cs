@@ -12,11 +12,13 @@ public class ObjectRotater : MonoBehaviour
 
     public static  GameObject _currentObj;
 
-    private void Awake()
+    private void Start()
     {
         int rand = Random.Range(0, itemsToSpawn.Count);
         _currentObj = Instantiate(itemsToSpawn[rand]);
         _currentObj.transform.parent = this.transform;
+        FindObjectOfType<Tape>().endPoint.transform.position = _currentObj.transform.position + new Vector3(0, 0, -.05f);
+        FindObjectOfType<Tape>().endPoint.transform.parent = _currentObj.transform;
 //        backEndRope.transform.position = _currentObj.transform.position;
 //        backEndRope.transform.parent = _currentObj.transform;
     }
