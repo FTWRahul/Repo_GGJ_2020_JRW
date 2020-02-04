@@ -30,7 +30,7 @@ namespace WrappingRope.Demo
 
             if (GUILayout.Button("Reset"))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneController.LoadScene(SceneController.GetActiveScene().name);
             }
             GUILayout.EndVertical();
             GUILayout.EndHorizontal();
